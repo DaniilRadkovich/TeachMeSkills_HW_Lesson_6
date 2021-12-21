@@ -1,17 +1,34 @@
 package com.teachmeskills.lesson_6.task_3.system;
 
-public abstract class Register {
+import com.teachmeskills.lesson_6.task_3.contract.Document;
 
-    Register[] registers = new Register[10];
+public class Register {
 
+    Document[] arrayDoc = new Document[10];
 
-
-    public void docSave(){
-
+    public Register() {
     }
 
-    public void getDocInfo(){
+    public Register(Document[] arrayDoc) {
+        this.arrayDoc = arrayDoc;
+    }
 
+    public void docSave(Document document) {
+        for (int i = 0; i < arrayDoc.length; i++) {
+            if (arrayDoc[i] == null) {
+                arrayDoc[i] = document;
+                break;
+            }
+        }
+    }
+
+    public String getDocInfo(Document document) {
+        for (int i = 0; i < arrayDoc.length; i++) {
+            if (arrayDoc[i] == document) {
+                return arrayDoc[i].toString();
+            }
+        }
+        return "No document find!";
     }
 
 }
